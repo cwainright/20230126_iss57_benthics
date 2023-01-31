@@ -39,7 +39,8 @@ buildEDDBob <- function(connection, write, addBob){
                     "tlu_Basin_Code",
                     "tbl_Summer_PHI",
                     "tbl_Spring_PHI",
-                    "tbl_Chemistry_Data"
+                    "tbl_Chemistry_Data",
+                    "tbl_Benthic_Habitat"
                 )
                 ) %>%
                 select(TABLE_NAME)
@@ -60,9 +61,9 @@ buildEDDBob <- function(connection, write, addBob){
             rm(qry_list)
             
             #----- call functions that build data for EDD tabs
-            activities <- getEDDActivities(results_list, marc2022, marc2021, habitat_marc2021, habitat_marc2022, addMarc)
-            locations <- getEDDLocations(results_list, marc2022, marc2021, habitat_marc2021, habitat_marc2022, addMarc)
-            results <- getEDDResults(results_list, marc2022, marc2021, habitat_marc2021, habitat_marc2022, addMarc)
+            activities <- getEDDActivities(results_list, habitat_marc2021, habitat_marc2022, bob_2021_macroinvert, bob_2021_water_chem, addBob)
+            locations <- getEDDLocations(results_list, habitat_marc2021, habitat_marc2022, bob_2021_macroinvert, bob_2021_water_chem, addBob)
+            results <- getEDDResults(results_list, habitat_marc2021, habitat_marc2022, bob_2021_macroinvert, bob_2021_water_chem, addBob)
             
             #----- compile data for EDD tabs into a list
             list_of_datasets <- list("Locations" = locations, "Activities" = activities, "Results" = results)
