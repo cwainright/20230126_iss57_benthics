@@ -12,6 +12,7 @@ getEDDLocations <- function(results_list, habitat_marc2021, habitat_marc2022, bo
             #----- load project functions
             source("scripts/edd/getMarcHabLocations.R")
             source("scripts/edd/getNCRNChemLocations.R")
+            source("scripts/bob/edd/getNCRNBenthicHabLocations.R") # write me
             source("scripts/bob/edd/getNCRNMacroinvertLocations.R")
             source("scripts/edd/getNCRNHabLocations.R")
             source("scripts/bob/edd/getBobMacroinvertLocations.R")
@@ -24,9 +25,10 @@ getEDDLocations <- function(results_list, habitat_marc2021, habitat_marc2022, bo
             marc_habitat_locations <- getMarcHabLocations(habitat_marc2022, habitat_marc2021, example, results_list)
             ncrn_chem_locations <- getNCRNChemLocations(results_list, example)
             ncrn_macroinvert_locations <- getNCRNMacroinvertLocations(results_list, example)
+            ncrn_benth_hab_locations <- getNCRNBenthicHabLocations(results_list, example)
             ncrn_hab_locations <- getNCRNHabLocations(results_list, example)
             
-            real <- rbind(ncrn_macroinvert_locations, ncrn_chem_locations, ncrn_hab_locations, marc_habitat_locations) # row bind project function returns
+            real <- rbind(ncrn_macroinvert_locations, ncrn_benth_hab_locations, ncrn_chem_locations, ncrn_hab_locations, marc_habitat_locations) # row bind project function returns
             
             #----- if TRUE add Marc's 2022 data to dataframe `real` NCRN db data
             if(addBob==TRUE){

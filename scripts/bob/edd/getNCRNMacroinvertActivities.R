@@ -29,7 +29,7 @@ getNCRNMacroinvertActivities <- function(results_list, example){
             real[5] <- "Field Msr/Obs" # "Activity_Type"; choices are: 1) 'Field Msr/Obs' and 2) 'Sample-Routine'
             real[6] <- "Water" # "Medium"  choices are "Water", "Air", and "Other" in `example`
             real[7] <- NA # "Medium_Subdivision"
-            real[8] <- "Stream Fish" # "Assemblage_Sampled_Name"
+            real[8] <- "Stream benthic macroinvertebrates" # "Assemblage_Sampled_Name"
             real[9] <- format(df$SampleDate, "%Y-%m-%d") # "Activity_Start_Date"
             real[10] <- format(df$Start_Time, "%H:%M") # "Activity_Start_Time" 
             real[11] <- "Eastern Time - Washington, DC" # "Activity_Start_Time_Zone" 

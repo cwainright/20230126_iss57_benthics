@@ -13,7 +13,7 @@ getEDDActivities <- function(results_list, habitat_marc2021, habitat_marc2022, b
             source("scripts/edd/getMarcHabActivities.R")
             source("scripts/edd/getNCRNChemActivities.R")
             source("scripts/edd/getNCRNHabActivities.R")
-            source("scripts/bob/edd/getNCRNBenthicHabActivities.R") ### write me
+            source("scripts/bob/edd/getNCRNBenthicHabActivities.R")
             source("scripts/bob/edd/getNCRNMacroinvertActivities.R")
             source("scripts/bob/edd/getBobMacroinvertActivities.R")
             source("scripts/bob/edd/getBobChemActivities.R")

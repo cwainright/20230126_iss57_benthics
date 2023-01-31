@@ -23,14 +23,14 @@ getNCRNBenthicHabActivities <- function(results_list, example){
             colnames(real) <- colnames(example) # name columns to match example
             
             real[1] <- "NCRN" # "#Org_Code" 
-            real[2] <- df$Protocol_Name # "Project_ID"
+            real[2] <- df$sample_type # "Project_ID"
             real[3] <- df$Event_Site_ID # "Location_ID" shared field with `real_locations.Location_ID`
             real[4] <- df$Event_ID # "Activity_ID" shared field with `real_locations.Activity_ID` and `real_results.Activity_ID`
             real[5] <- "Field Msr/Obs" # "Activity_Type"; choices are: 1) 'Field Msr/Obs' and 2) 'Sample-Routine'
             real[6] <- "Water" # "Medium"  choices are "Water", "Air", and "Other" in `example`
             real[7] <- NA # "Medium_Subdivision"
-            real[8] <- "Stream Fish" # "Assemblage_Sampled_Name"
-            real[9] <- format(df$SampleDate, "%Y-%m-%d") # "Activity_Start_Date"
+            real[8] <- df$sample_type # "Assemblage_Sampled_Name"
+            real[9] <- format(df$Start_Date, "%Y-%m-%d") # "Activity_Start_Date"
             real[10] <- format(df$Start_Time, "%H:%M") # "Activity_Start_Time" 
             real[11] <- "Eastern Time - Washington, DC" # "Activity_Start_Time_Zone" 
             real[12] <- NA # "Activity_End_Date" 
@@ -44,25 +44,12 @@ getNCRNBenthicHabActivities <- function(results_list, example){
             real[20] <- NA # "Activity_Depth_Reference"
             real[21] <- df$Loc_Name # "Additional_Location_Info"
             real[22] <- NA # "Activity_Sampler"; the person who did the sampling?
-            # "Activity_Recorder"
-            real[23] <- df$Entered_by
-            for (i in 1:nrow(real)){ # for each row
-                ifelse(stringr::str_detect(real$Activity_Recorder[i], "Event") == TRUE, # 'Event' ends up in some records, so we regex to remove
-                       # regex to extract strings matching pattern:
-                       # String starts with (^) any character (*)
-                       # followed by one or more (+) numbers ([0-9])
-                       # followed by a dash (-)
-                       # followed by one or more (+) numbers ([0-9])
-                       # followed by a period (.)
-                       # followed by one or more (+) numbers ([0-9])
-                       real[i,23] <- stringr::str_extract(real[i,23], "^*([0-9])+-([0-9])+.([0-9])+"),
-                       real[i,23] <- real[i,23])# units are meters
-            }
+            real[23] <- df$Entered_by # "Activity_Recorder"
             real[24] <- df$NCRN_Site_ID # "Custody_ID" 
             real[25] <- "NCRN" # "Activity_Conducting_Organization" 
             real[26] <- NA # "Station_Visit_Comment" 
             real[27] <- df$Comments # "Activity_Comment
-            real[28] <- paste0(df$Protocol_Name, "; version ", df$Protocol_Version, "; protocol date ", df$Version_Date) # "Collection_Method_ID" 
+            real[28] <- paste0(df$sample_type, "; version ", df$Protocol_Version, "; protocol date ", df$Version_Date) # "Collection_Method_ID" 
             real[29] <- NA # Possibly a Smith Root LR-24 but not known; "Collection_Equipment_Name" 
             real[30] <- NA # Possibly a Smith Root LR-24 but not known; # "Collection_Equipment_Description" 
             real[31] <- NA # subset(results_list$tlu_Collection_Procedures_Gear_Config, `Field Gear Category` == "Smith Root LR-24")$`Field Procedure ID` # "Gear_Deployment"
@@ -70,8 +57,8 @@ getNCRNBenthicHabActivities <- function(results_list, example){
             real[33] <- NA # "Container_Color"
             real[34] <- NA # "Container_Size"
             real[35] <- NA # "Container_Size_Unit"
-            real[36] <- paste0(df$Protocol_Name, "; version ", df$Protocol_Version, "; protocol date ", df$Version_Date) # "Preparation_Method_ID"
-            real[37] <- "10% buffered formalin solution (later transferable to 70% EtOH solution)" # "Chemical_Preservative" # pdf pg 124 (135) https://doimspp.sharepoint.com/:b:/r/sites/NCRNBiologicalStreamSampling/Shared%20Documents/General/Operational%20Reviews/NCRN_Biological_Stream_Survey_Protocol_Ver_2.0_NRR.pdf?csf=1&web=1&e=u0kGN9
+            real[36] <- paste0(df$sample_type, "; version ", df$Protocol_Version, "; protocol date ", df$Version_Date) # "Preparation_Method_ID"
+            real[37] <- NA # "Chemical_Preservative" # pdf pg 124 (135) https://doimspp.sharepoint.com/:b:/r/sites/NCRNBiologicalStreamSampling/Shared%20Documents/General/Operational%20Reviews/NCRN_Biological_Stream_Survey_Protocol_Ver_2.0_NRR.pdf?csf=1&web=1&e=u0kGN9
             real[38] <- NA # "Thermal_Preservative". Fish are preserved via chemicals, not wet ice
             real[39] <- NA # "Transport_Storage_Description" 
             real[40] <- df$Event_Group_ID # "Activity_Group_ID"
@@ -84,7 +71,7 @@ getNCRNBenthicHabActivities <- function(results_list, example){
             real[45] <- df$sample_type # Sampling_Component_Name
             real[46] <- NA # Sampling_Component_Place_In_Series
             real[47] <- NA # "Reach_Length"
-            real[48] <- NA # Reach_Length_Unit
+            real[48] <- NA# Reach_Length_Unit
             real[49] <- NA # "Reach_Width"
             real[50] <- NA # "Reach_Width_Unit" 
             real[51] <- NA # [electrofishing] "Pass_Count"
@@ -99,11 +86,10 @@ getNCRNBenthicHabActivities <- function(results_list, example){
             real[60] <- NA # "Current_Speed_Unit"
             real[61] <- NA # "Toxicity_Test_Type"
             real[62] <- NA # "Effort"
-            real[63] <- NA# "Effort_Unit"
+            real[63] <- NA # "Effort_Unit"
             real <- as.data.frame(lapply(real, function(y) gsub("NA", NA, y))) # remove "NA" chr strings
             colnames(real)[1] <- "#Org_Code"
-            # test <- cbind(real_activities[62:63], df$Pass_1_End, df$Pass_1_Start, df$Pass_2_End, df$Pass_2_Start) # check the `$Effort` math in real[62]
-
+            
             # error-checking:
             check_df <- tibble::tibble(data.frame(matrix(ncol=3, nrow=ncol(real))))
             colnames(check_df) <- c("real", "example", "result")
