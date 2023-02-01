@@ -30,7 +30,7 @@ buildEDDBob <- function(connection, write, addBob){
             tbl_names <- db_objs %>% # choose which tables you want to query
                 subset(TABLE_NAME %in% c(
                     "tbl_Events",
-                    "_tlu_Macroinverts",
+                    "tlu_Macroinverts",
                     "tbl_Protocol",
                     "tbl_Chemistry_Data",
                     "tbl_Locations",
@@ -40,7 +40,9 @@ buildEDDBob <- function(connection, write, addBob){
                     "tbl_Summer_PHI",
                     "tbl_Spring_PHI",
                     "tbl_Chemistry_Data",
-                    "tbl_Benthic_Habitat"
+                    "tbl_Benthic_Habitat",
+                    "tbl_Summer_PHI",
+                    "tbl_Spring_PHI"
                 )
                 ) %>%
                 select(TABLE_NAME)
