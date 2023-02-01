@@ -46,7 +46,7 @@ library(openxlsx)
 source("scripts/edd/buildEDDMarc.R")
 # source("scripts/bio_mon_tools/buildBioMonTools.R")
 source("scripts/marc/buildMarcView.R")
-source("scripts/marc/buildEDDBob.R")
+source("scripts/bob/edd/buildEDDBob.R")
 
 # Connect to db
 RODBC::odbcCloseAll() # close db connection
@@ -54,9 +54,9 @@ db <- ("C:/Users/cwainright/OneDrive - DOI/Documents - NPS-NCRN-Biological Strea
 # db <- file.choose()
 con <- RODBC::odbcConnectAccess2007(db) # open db connection
 
-buildEDDMarc(connection = con, write = FALSE, addMarc = TRUE)
+# buildEDDMarc(connection = con, write = FALSE, addMarc = TRUE)
 # buildBioMonTools(connection = con, write = FALSE)
-buildMarc(connection = con, write = FALSE, addMarc = TRUE)
+# buildMarc(connection = con, write = FALSE, addMarc = TRUE)
 buildEDDBob(connection = con, write = FALSE, addBob = TRUE)
 
 RODBC::odbcCloseAll() # close db connection
