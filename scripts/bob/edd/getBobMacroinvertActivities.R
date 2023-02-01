@@ -15,8 +15,9 @@ getBob2021MacroinvertsActivities <- function(results_list, bob_2021_water_chem, 
       df <- df %>% subset(`Sample ID` %like% "PRWI")
       df$`Date Collected` <- as.Date(as.numeric(df$`Date Collected`), origin = "1899-12-30")
       df2 <- df
-      df$sample_type <- "Stream macroinvertebrate sampling"
+      df$Characteristic_Name <- "Stream macroinvertebrate sampling"
       df$Activity_ID <- paste0(df$`Sample ID`, "_macroinvertebrates")
+      df$Assemblage_Sampled_Name <- "Stream benthic macroinvertebrates"
       
       loc_lookup <- results_list$tbl_Locations %>% select(Location_ID, Site_ID, NCRN_Site_ID, Loc_Name)
       loc_lookup$bob_site <- stringr::str_sub(loc_lookup$NCRN_Site_ID, -9, -1)
@@ -24,18 +25,17 @@ getBob2021MacroinvertsActivities <- function(results_list, bob_2021_water_chem, 
       df <- dplyr::left_join(df, loc_lookup, by=c("Sample ID" = "bob_site"))
       
       #----- re-build `example` from `results_list`
-      # starting point: copy the example dataframe but without data
       real <- tibble::tibble(data.frame(matrix(ncol = ncol(example), nrow = nrow(df)))) # empty dataframe
       colnames(real) <- colnames(example) # name columns to match example
       
       real[1] <- "NCRN" # "#Org_Code" 
-      real[2] <- df$sample_type # "Project_ID"
+      real[2] <- df$Characteristic_Name # "Project_ID"
       real[3] <- df$`Sample ID` # "Location_ID" shared field with `real_locations.Location_ID`
       real[4] <- df$Activity_ID # "Activity_ID" shared field with `real_locations.Activity_ID` and `real_results.Activity_ID`
       real[5] <- "Field Msr/Obs" # "Activity_Type"; choices are: 1) 'Field Msr/Obs' and 2) 'Sample-Routine'
       real[6] <- "Water" # "Medium"  choices are "Water", "Air", and "Other" in `example`
       real[7] <- NA # "Medium_Subdivision"
-      real[8] <- df$sample_type # "Assemblage_Sampled_Name"
+      real[8] <- df$Assemblage_Sampled_Name # "Assemblage_Sampled_Name"
       real[9] <- format(df$`Date Collected`, "%Y-%m-%d") # "Activity_Start_Date"
       real[10] <- NA # "Activity_Start_Time" 
       real[11] <- NA # "Activity_Start_Time_Zone" 
@@ -52,7 +52,7 @@ getBob2021MacroinvertsActivities <- function(results_list, bob_2021_water_chem, 
       real[22] <- NA # "Activity_Sampler"; the person who did the sampling?
       # "Activity_Recorder"
       real[23] <- NA
-      real[24] <- paste0("NCRN-", df$Site_ID)# "Custody_ID" 
+      real[24] <- paste0("NCRN-", df$`Sample ID`)# "Custody_ID" 
       real[25] <- "NCRN" # "Activity_Conducting_Organization" 
       real[26] <- NA # "Station_Visit_Comment" 
       real[27] <- NA # "Activity_Comment
@@ -64,7 +64,7 @@ getBob2021MacroinvertsActivities <- function(results_list, bob_2021_water_chem, 
       real[33] <- NA # "Container_Color"
       real[34] <- NA # "Container_Size"
       real[35] <- NA # "Container_Size_Unit"
-      real[36] <- paste0(df$sample_type, "; version 2.0; protocol date 2009/116") # "Preparation_Method_ID"
+      real[36] <- paste0(df$Assemblage_Sampled_Name, "; version 2.0; protocol date 2009/116") # "Preparation_Method_ID"
       real[37] <- NA # "Chemical_Preservative" # pdf pg 124 (135) https://doimspp.sharepoint.com/:b:/r/sites/NCRNBiologicalStreamSampling/Shared%20Documents/General/Operational%20Reviews/NCRN_Biological_Stream_Survey_Protocol_Ver_2.0_NRR.pdf?csf=1&web=1&e=u0kGN9
       real[38] <- NA # "Thermal_Preservative". Fish are preserved via chemicals, not wet ice
       real[39] <- NA # "Transport_Storage_Description" 
@@ -75,7 +75,7 @@ getBob2021MacroinvertsActivities <- function(results_list, bob_2021_water_chem, 
                          NA)# "Activity_Group_Type"  
       real[43] <- NA # we don't record stop time for fish events e-fishing, so duration is unknown
       real[44] <- NA # we don't record stop time for fish events e-fishing, so duration unit is unknown
-      real[45] <- df$sample_type # Sampling_Component_Name
+      real[45] <- df$Assemblage_Sampled_Name # Sampling_Component_Name
       real[46] <- NA # Sampling_Component_Place_In_Series
       real[47] <- NA # "Reach_Length"
       real[48] <- NA# Reach_Length_Unit
@@ -96,8 +96,7 @@ getBob2021MacroinvertsActivities <- function(results_list, bob_2021_water_chem, 
       real[63] <- NA # "Effort_Unit"
       real <- as.data.frame(lapply(real, function(y) gsub("NA", NA, y))) # remove "NA" chr strings
       colnames(real)[1] <- "#Org_Code"
-      # test <- cbind(real_activities[62:63], df$Pass_1_End, df$Pass_1_Start, df$Pass_2_End, df$Pass_2_Start) # check the `$Effort` math in real[62]
-      
+
       # error-checking:
       check_df <- tibble::tibble(data.frame(matrix(ncol=3, nrow=ncol(real))))
       colnames(check_df) <- c("real", "example", "result")

@@ -96,7 +96,6 @@ getBob2021ChemActivities <- function(results_list, bob_2021_water_chem, example)
       real[63] <- NA # "Effort_Unit"
       real <- as.data.frame(lapply(real, function(y) gsub("NA", NA, y))) # remove "NA" chr strings
       colnames(real)[1] <- "#Org_Code"
-      # test <- cbind(real_activities[62:63], df$Pass_1_End, df$Pass_1_Start, df$Pass_2_End, df$Pass_2_Start) # check the `$Effort` math in real[62]
       
       # error-checking:
       check_df <- tibble::tibble(data.frame(matrix(ncol=3, nrow=ncol(real))))
