@@ -28,24 +28,25 @@ buildEDDBob <- function(connection, write, addBob){
             #-----  Query db
             db_objs <- RODBC::sqlTables(con) # test db connection
             tbl_names <- db_objs %>% # choose which tables you want to query
-                subset(TABLE_NAME %in% c(
-                    "tbl_Events",
-                    "tlu_Macroinverts",
-                    "tbl_Protocol",
-                    "tbl_Chemistry_Data",
-                    "tbl_Locations",
-                    "tbl_Meta_Events",
-                    "tbl_Benthic_Data",
-                    "tlu_Basin_Code",
-                    "tbl_Summer_PHI",
-                    "tbl_Spring_PHI",
-                    "tbl_Chemistry_Data",
-                    "tbl_Benthic_Habitat",
-                    "tbl_Summer_PHI",
-                    "tbl_Spring_PHI"
+              subset(
+                TABLE_NAME %in% c(
+                  "tbl_Events",
+                  "tlu_Macroinverts",
+                  "tbl_Protocol",
+                  "tbl_Chemistry_Data",
+                  "tbl_Locations",
+                  "tbl_Meta_Events",
+                  "tbl_Benthic_Data",
+                  "tlu_Basin_Code",
+                  "tbl_Summer_PHI",
+                  "tbl_Spring_PHI",
+                  "tbl_Chemistry_Data",
+                  "tbl_Benthic_Habitat",
+                  "tbl_Summer_PHI",
+                  "tbl_Spring_PHI"
                 )
-                ) %>%
-                select(TABLE_NAME)
+              ) %>%
+              select(TABLE_NAME)
             
             # make list of queries so we can extract a few rows from each table
             qry_list <- vector(mode="list", length=nrow(tbl_names))
@@ -72,7 +73,7 @@ buildEDDBob <- function(connection, write, addBob){
             if(length(list_of_datasets)==3){
                 if(nrow(list_of_datasets[[1]]>0) & nrow(list_of_datasets[[2]]>0) & nrow(list_of_datasets[[3]]>0)){
                     assign("EDD", list_of_datasets, envir = globalenv()) # save final product to global environment
-                    message("\n\n`buildEDD()` successfully produced data views.\nOutput saved as `EDD` in global environment.\n\n")
+                    message("\n\n`buildEDDBob()` successfully produced data views.\nOutput saved as `EDD` in global environment.\n\n")
                 }
             } else {
                 message("An error occurred when compiling results.")
