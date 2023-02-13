@@ -29,7 +29,7 @@ getNCRNBenthicHabResults <- function(results_list, example){
                                   "Numeric. Square feet of undercut bank sampled for benthos",
                                   "Numeric. Square feet of 'other habitats' sampled for benthos. Description of 'other habitat' in $Analytical_Remark"
                                   )
-            unit_lookup$Characteristic_Name <- c("riffle sampled for benthos",
+            unit_lookup$Method_Speciation <- c("riffle sampled for benthos",
                                                  "root wad sampled for benthos",
                                                  "leaf pack smapled for benthos",
                                                  "macrophytes sampled for benthos",
@@ -40,6 +40,7 @@ getNCRNBenthicHabResults <- function(results_list, example){
             # join taxonomic values
             df <- dplyr::left_join(df, results_list$tbl_Events %>% select(Event_ID, Start_Date, Start_Time, Location_ID, Comments), by = "Event_ID")
             df <- dplyr::left_join(df, results_list$tbl_Locations %>% select(Location_ID, Loc_Name), by = "Location_ID")
+            df$Characteristic_Name <- "Stream habitat inventory"
             
             #----- re-build `example` from `results_list`
             real <- tibble::tibble(data.frame(matrix(ncol = ncol(example), nrow = nrow(df)))) # empty dataframe
@@ -48,7 +49,7 @@ getNCRNBenthicHabResults <- function(results_list, example){
             real[1] <- "NCRN" # "#Org_Code" 
             real[2] <- df$Event_ID # "Activity_ID" shared field with `real_activities.Activity_ID`
             real[3] <- df$Characteristic_Name # "Characteristic_Name"  
-            real[4] <- df$variable # "Method_Speciation"
+            real[4] <- df$Method_Speciation # "Method_Speciation"
             real[5] <- NA # "Filtered_Fraction"
             real[6] <- NA # "Result_Detection_Condition"
             real[7] <- df$value # "Result_Text"
@@ -75,7 +76,7 @@ getNCRNBenthicHabResults <- function(results_list, example){
             real[28] <- NA # "Result_Depth_Height_Measure"
             real[29] <- NA # "Result_Depth_Height_Measure_Unit" 
             real[30] <- NA # "Result_Depth_Altitude_Reference_Point"
-            real[31] <-  # "Analytical_Method_ID"
+            real[31] <- df$variable # "Analytical_Method_ID"
             real[32] <- df$OTHTYPE # "Analytical_Remark"
             real[33] <- NA # "Lab_ID"
             real[34] <- NA # "Lab_Remark_Code"
