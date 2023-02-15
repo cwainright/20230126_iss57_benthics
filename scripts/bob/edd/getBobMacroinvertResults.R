@@ -124,7 +124,7 @@ getBobMacroinvertsResults <- function(results_list, bob_2021_macroinvert, bob_20
       real[88] <- NA # "Taxonomist_Accreditation_Authority_Name"
       real[89] <- NA # "Result_File_Name"
       
-      real <- as.data.frame(lapply(real, function(y) gsub("NA", NA, y))) # remove "NA" chr strings
+      real <- as.data.frame(lapply(real, function(y) gsub("\\<NA\\>", NA, y))) # remove "NA" chr strings
       colnames(real)[1] <- "#Org_Code"    
       
       # error-checking:

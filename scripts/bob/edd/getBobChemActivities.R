@@ -69,7 +69,7 @@ getBob2021ChemActivities <- function(results_list, bob_2021_water_chem, example)
       real[38] <- NA # "Thermal_Preservative". Fish are preserved via chemicals, not wet ice
       real[39] <- NA # "Transport_Storage_Description" 
       real[40] <- NA # "Activity_Group_ID"
-      real[41] <- df$ # "Activity_Group_Name" 
+      real[41] <- NA # "Activity_Group_Name" 
       real[42] <- ifelse(is.na(real[41])==TRUE,
                          paste0("Activities for: ", df$Activity_ID),
                          NA)# "Activity_Group_Type"  
@@ -94,7 +94,7 @@ getBob2021ChemActivities <- function(results_list, bob_2021_water_chem, example)
       real[61] <- NA # "Toxicity_Test_Type"
       real[62] <- NA # "Effort"
       real[63] <- NA # "Effort_Unit"
-      real <- as.data.frame(lapply(real, function(y) gsub("NA", NA, y))) # remove "NA" chr strings
+      real <- as.data.frame(lapply(real, function(y) gsub("\\<NA\\>", NA, y))) # remove "NA" chr strings
       colnames(real)[1] <- "#Org_Code"
       
       # error-checking:

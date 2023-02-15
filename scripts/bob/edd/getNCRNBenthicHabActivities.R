@@ -87,7 +87,7 @@ getNCRNBenthicHabActivities <- function(results_list, example){
             real[61] <- NA # "Toxicity_Test_Type"
             real[62] <- NA # "Effort"
             real[63] <- NA # "Effort_Unit"
-            real <- as.data.frame(lapply(real, function(y) gsub("NA", NA, y))) # remove "NA" chr strings
+            real <- as.data.frame(lapply(real, function(y) gsub("\\<NA\\>", NA, y))) # remove "NA" chr strings
             colnames(real)[1] <- "#Org_Code"
             
             # error-checking:
