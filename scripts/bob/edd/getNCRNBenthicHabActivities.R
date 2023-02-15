@@ -24,7 +24,7 @@ getNCRNBenthicHabActivities <- function(results_list, example){
             
             real[1] <- "NCRN" # "#Org_Code" 
             real[2] <- df$sample_type # "Project_ID"
-            real[3] <- df$Event_Site_ID # "Location_ID" shared field with `real_locations.Location_ID`
+            real[3] <- df$NCRN_Site_ID # "Location_ID" shared field with `real_locations.Location_ID`
             real[4] <- df$Event_ID # "Activity_ID" shared field with `real_locations.Activity_ID` and `real_results.Activity_ID`
             real[5] <- "Field Msr/Obs" # "Activity_Type"; choices are: 1) 'Field Msr/Obs' and 2) 'Sample-Routine'
             real[6] <- "Water" # "Medium"  choices are "Water", "Air", and "Other" in `example`
@@ -45,7 +45,7 @@ getNCRNBenthicHabActivities <- function(results_list, example){
             real[21] <- df$Loc_Name # "Additional_Location_Info"
             real[22] <- NA # "Activity_Sampler"; the person who did the sampling?
             real[23] <- df$Entered_by # "Activity_Recorder"
-            real[24] <- df$NCRN_Site_ID # "Custody_ID" 
+            real[24] <- df$Event_Site_ID # "Custody_ID" 
             real[25] <- "NCRN" # "Activity_Conducting_Organization" 
             real[26] <- NA # "Station_Visit_Comment" 
             real[27] <- df$Comments # "Activity_Comment

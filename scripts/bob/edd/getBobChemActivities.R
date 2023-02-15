@@ -30,7 +30,7 @@ getBob2021ChemActivities <- function(results_list, bob_2021_water_chem, example)
       
       real[1] <- "NCRN" # "#Org_Code" 
       real[2] <- df$sample_type # "Project_ID"
-      real[3] <- df$`Sample ID` # "Location_ID" shared field with `real_locations.Location_ID`
+      real[3] <- df$NCRN_Site_ID # "Location_ID" shared field with `real_locations.Location_ID`
       real[4] <- df$Activity_ID # "Activity_ID" shared field with `real_locations.Activity_ID` and `real_results.Activity_ID`
       real[5] <- "Field Msr/Obs" # "Activity_Type"; choices are: 1) 'Field Msr/Obs' and 2) 'Sample-Routine'
       real[6] <- "Water" # "Medium"  choices are "Water", "Air", and "Other" in `example`
@@ -68,8 +68,8 @@ getBob2021ChemActivities <- function(results_list, bob_2021_water_chem, example)
       real[37] <- NA # "Chemical_Preservative" # pdf pg 124 (135) https://doimspp.sharepoint.com/:b:/r/sites/NCRNBiologicalStreamSampling/Shared%20Documents/General/Operational%20Reviews/NCRN_Biological_Stream_Survey_Protocol_Ver_2.0_NRR.pdf?csf=1&web=1&e=u0kGN9
       real[38] <- NA # "Thermal_Preservative". Fish are preserved via chemicals, not wet ice
       real[39] <- NA # "Transport_Storage_Description" 
-      real[40] <- df$Location_ID # "Activity_Group_ID"
-      real[41] <- df$NCRN_Site_ID # "Activity_Group_Name" 
+      real[40] <- NA # "Activity_Group_ID"
+      real[41] <- df$ # "Activity_Group_Name" 
       real[42] <- ifelse(is.na(real[41])==TRUE,
                          paste0("Activities for: ", df$Activity_ID),
                          NA)# "Activity_Group_Type"  
