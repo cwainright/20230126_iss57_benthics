@@ -24,6 +24,9 @@ buildEDDBob <- function(connection, write, addBob){
             habitat_marc2022 <- readxl::read_excel("data/NCRN_BSS_Fish_Monitoring_Data_Stream_Habitat_2022_Marc.xlsx", sheet = "Summer Habitat Data Sheet") # https://doimspp.sharepoint.com/:x:/r/sites/NCRNBiologicalStreamSampling/Shared%20Documents/General/Annual-Data-Packages/2022/Marc_and_Bob/Fish_Template/NCRN_BSS_Fish_Monitoring_Data_Stream_Habitat_2022_Marc.xlsx?d=web62dc84b1204861bb8fff2754a34c88&csf=1&web=1&e=5Um3sm
             bob_2021_macroinvert <- readxl::read_excel("data/2021 PRWI sites.xlsx", sheet = "raw benthic data")
             bob_2021_water_chem <- readxl::read_excel("data/2021 PRWI sites.xlsx", sheet = "water chem")
+            bob_2022_wq <- readxl::read_excel("data/NPS_WQ_2022v2_bob.xlsx")
+            bob_2022_hab <- readxl::read_excel("data/NPS_Spring_Habitat_2022_bob.xlsx", skip = 1)
+            bob_2022_macroinvert <- readxl::read_excel("data/NPS_spring_2022_benthics_bob.xlsx")
             
             #-----  Query db
             db_objs <- RODBC::sqlTables(con) # test db connection
@@ -64,9 +67,9 @@ buildEDDBob <- function(connection, write, addBob){
             rm(qry_list)
             
             #----- call functions that build data for EDD tabs
-            activities <- getEDDActivities(results_list, habitat_marc2021, habitat_marc2022, bob_2021_macroinvert, bob_2021_water_chem, addBob)
-            locations <- getEDDLocations(results_list, habitat_marc2021, habitat_marc2022, bob_2021_macroinvert, bob_2021_water_chem, addBob)
-            results <- getEDDResults(results_list, habitat_marc2021, habitat_marc2022, bob_2021_macroinvert, bob_2021_water_chem, addBob)
+            activities <- getEDDActivities(results_list, habitat_marc2021, habitat_marc2022, bob_2021_macroinvert, bob_2021_water_chem, bob_2022_wq, bob_2022_hab, bob_2022_macroinvert, addBob)
+            locations <- getEDDLocations(results_list, habitat_marc2021, habitat_marc2022, bob_2021_macroinvert, bob_2021_water_chem, bob_2022_wq, bob_2022_hab, bob_2022_macroinvert, addBob)
+            results <- getEDDResults(results_list, habitat_marc2021, habitat_marc2022, bob_2021_macroinvert, bob_2021_water_chem, bob_2022_wq, bob_2022_hab, bob_2022_macroinvert, addBob)
             
             #----- compile data for EDD tabs into a list
             list_of_datasets <- list("Locations" = locations, "Activities" = activities, "Results" = results)
