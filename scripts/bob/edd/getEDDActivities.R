@@ -1,6 +1,6 @@
 # a module for `buildEDDBob()`
 options(warn=-1)
-getEDDActivities <- function(results_list, habitat_marc2021, habitat_marc2022, bob_2021_macroinvert, bob_2021_water_chem, addBob){
+getEDDActivities <- function(results_list, habitat_marc2021, habitat_marc2022, bob_2021_macroinvert, bob_2021_water_chem, bob_2022_wq, bob_2022_hab, bob_2022_macroinverts, addBob){
     tryCatch(
         expr = {
             #----- load external libraries
@@ -17,6 +17,9 @@ getEDDActivities <- function(results_list, habitat_marc2021, habitat_marc2022, b
             source("scripts/bob/edd/getNCRNMacroinvertActivities.R")
             source("scripts/bob/edd/getBobMacroinvertActivities.R")
             source("scripts/bob/edd/getBobChemActivities.R")
+            source("scripts/bob/edd/getBob2022ChemActivities.R")
+            source("scripts/bob/edd/getBob2022HabActivities.R")
+            source("scripts/bob/edd/getBob2022MacroinvertActivities.R")
             
             # load example data
             example <- readxl::read_excel("data/NCRN_BSS_EDD_20230105_1300.xlsx", sheet = "Activities") # https://doimspp.sharepoint.com/:x:/r/sites/NCRNDataManagement/Shared%20Documents/General/Standards/Data-Standards/EQuIS-WQX-EDD/NCRN_BSS_EDD_20230105_1300.xlsx?d=w8c283fde9cbd4af480945c8c8bd94ff6&csf=1&web=1&e=7Y9W1M
@@ -33,8 +36,11 @@ getEDDActivities <- function(results_list, habitat_marc2021, habitat_marc2022, b
             if(addBob==TRUE){
               bob_2021_macroinvert_activities <- getBob2021MacroinvertsActivities(results_list, bob_2021_water_chem, example)# bob's water chem and macroinvert samples are the same locations
               bob_2021_chem_activities <- getBob2021ChemActivities(results_list, bob_2021_water_chem, example) # just use `water_chem` twice because it's already grouped by site
+              bob_2022_chem_activities <- getBob2022ChemActivities(results_list, bob_2022_wq, example)
+              bob_2022_macroinvert_activities <- getBob2022MacroinvertActivities(results_list, bob_2022_macroinvert, example)
+              bob_2022_hab_activities <- getBob2022HabActivities(results_list, bob_2022_hab, example)
               # combine
-              real <- rbind(real, bob_2021_macroinvert_activities, bob_2021_chem_activities)
+              real <- rbind(real, bob_2021_macroinvert_activities, bob_2021_chem_activities, bob_2022_chem_activities, bob_2022_macroinvert_activities, bob_2022_hab_activities)
             }
             
             #----- keep only unique Activities

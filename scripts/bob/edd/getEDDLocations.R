@@ -1,6 +1,6 @@
 # a module for `buildEDDBob()`
 options(warn=-1)
-getEDDLocations <- function(results_list, habitat_marc2021, habitat_marc2022, bob_2021_macroinvert, bob_2021_water_chem, addBob){
+getEDDLocations <- function(results_list, habitat_marc2021, habitat_marc2022, bob_2021_macroinvert, bob_2021_water_chem, bob_2022_wq, bob_2022_hab, bob_2022_macroinvert, addBob){
     tryCatch(
         expr = {
             #----- load external libraries
@@ -17,6 +17,9 @@ getEDDLocations <- function(results_list, habitat_marc2021, habitat_marc2022, bo
             source("scripts/edd/getNCRNHabLocations.R")
             source("scripts/bob/edd/getBobMacroinvertLocations.R")
             source("scripts/bob/edd/getBobChemLocations.R")
+            source("scripts/bob/edd/getBob2022ChemLocations.R") # write me
+            source("scripts/bob/edd/getBob2022HabLocations.R") # write me
+            source("scripts/bob/edd/getBob2022MacroinvertLocations.R") # write me
             
             # load example data
             example <- readxl::read_excel("data/NCRN_BSS_EDD_20230105_1300.xlsx", sheet = "Locations") # https://doimspp.sharepoint.com/:x:/r/sites/NCRNDataManagement/Shared%20Documents/General/Standards/Data-Standards/EQuIS-WQX-EDD/NCRN_BSS_EDD_20230105_1300.xlsx?d=w8c283fde9cbd4af480945c8c8bd94ff6&csf=1&web=1&e=7Y9W1M
@@ -34,8 +37,11 @@ getEDDLocations <- function(results_list, habitat_marc2021, habitat_marc2022, bo
             if(addBob==TRUE){
               bob_2021_macroinvert_locations <- getBob2021MacroinvertLocations(results_list, bob_2021_water_chem, example) # updated to NCRN_Site_ID
               bob_2021_chem_locations <- getBob2021ChemLocations(results_list, bob_2021_water_chem, example) # updated to NCRN_Site_ID
+              bob_2022_chem_locations <- getBob2022ChemLocations(results_list, bob_2022_wq, example)
+              bob_2022_hab_locations <- getBob2022HabLocations(results_list, bob_2022_hab, example)
+              bob_2022_macroinvert_locations <- getBob2022MacroinvertLocations(results_list, bob_2022_macroinvert, example)
               # combine
-              real <- rbind(real, bob_2021_macroinvert_locations, bob_2021_chem_locations)
+              real <- rbind(real, bob_2021_macroinvert_locations, bob_2021_chem_locations, bob_2022_chem_locations, bob_2022_hab_locations, bob_2022_macroinvert_locations)
             }
             
             #----- keep only unique Locations
