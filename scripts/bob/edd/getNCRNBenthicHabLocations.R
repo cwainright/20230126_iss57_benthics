@@ -26,7 +26,7 @@ getNCRNBenthicHabLocations <- function(results_list, example){
             
             real[1] <- "NCRN" # "#Org_Code"
             real[2] <- df$Unit_Code # "Park_Code" 
-            real[3] <- df$Location_ID # "Location_ID" shared field with `real_activities.Location_ID`
+            real[3] <- df$NCRN_Site_ID # "Location_ID" shared field with `real_activities.Location_ID`
             real[4] <- df$Loc_Name # "Location_Name"
             real[5] <- "Creek" # "Location_Type"
             real[6] <- sprintf("%.7f", df$Dec_Degrees_North) # "Latitude"

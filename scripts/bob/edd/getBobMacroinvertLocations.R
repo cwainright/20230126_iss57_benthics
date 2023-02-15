@@ -26,6 +26,7 @@ getBob2021MacroinvertLocations <- function(results_list, bob_2021_water_chem, ex
       df <- dplyr::left_join(df, loc_lookup, by=c("Sample ID" = "bob_site"))
       df$NCRN_Site_ID <- paste0("NCRN-", df$`Sample ID`)
       df <- df %>% distinct(NCRN_Site_ID, .keep_all = TRUE)
+      df$NCRN_Site_ID <- gsub("-", "_", df$NCRN_Site_ID)
       
       #----- re-build `example` from `results_list`
       # starting point: copy the example dataframe but without data
@@ -39,7 +40,7 @@ getBob2021MacroinvertLocations <- function(results_list, bob_2021_water_chem, ex
       
       real[1] <- "NCRN" # "#Org_Code"
       real[2] <- df$Unit_Code # "Park_Code" 
-      real[3] <- df$Location_ID # "Location_ID" shared field with `real_activities.Location_ID`
+      real[3] <- df$NCRN_Site_ID # "Location_ID" shared field with `real_activities.Location_ID`
       real[4] <- df$Loc_Name # "Location_Name"
       real[5] <- "Creek" # "Location_Type"
       real[6] <- sprintf("%.7f", df$Dec_Degrees_North) # "Latitude"
