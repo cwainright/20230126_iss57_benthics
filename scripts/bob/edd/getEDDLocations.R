@@ -38,7 +38,7 @@ getEDDLocations <- function(results_list, habitat_marc2021, habitat_marc2022, bo
               bob_2021_macroinvert_locations <- getBob2021MacroinvertLocations(results_list, bob_2021_water_chem, example) # updated to NCRN_Site_ID
               bob_2021_chem_locations <- getBob2021ChemLocations(results_list, bob_2021_water_chem, example) # updated to NCRN_Site_ID
               bob_2022_chem_locations <- getBob2022ChemLocations(results_list, bob_2022_wq, example) # updated to NCRN_Site_ID
-              bob_2022_hab_locations <- getBob2022HabLocations(results_list, bob_2022_hab, example)
+              bob_2022_hab_locations <- getBob2022HabLocations(results_list, bob_2022_hab, example) # updated to NCRN_Site_ID
               bob_2022_macroinvert_locations <- getBob2022MacroinvertLocations(results_list, bob_2022_macroinvert, example) # updated to NCRN_Site_ID
               # combine
               real <- rbind(real, bob_2021_macroinvert_locations, bob_2021_chem_locations, bob_2022_chem_locations, bob_2022_hab_locations, bob_2022_macroinvert_locations)
