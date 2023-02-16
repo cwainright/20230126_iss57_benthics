@@ -1,6 +1,6 @@
 # a module for `buildEDDBob()`
 options(warn=-1)
-getEDDActivities <- function(results_list, habitat_marc2021, habitat_marc2022, bob_2021_macroinvert, bob_2021_water_chem, bob_2022_wq, bob_2022_hab, bob_2022_macroinverts, addBob){
+getEDDActivities <- function(results_list, habitat_marc2021, habitat_marc2022, bob_2021_macroinvert, bob_2021_water_chem, bob_2022_wq, bob_2022_hab, bob_2022_macroinvert, addBob){
     tryCatch(
         expr = {
             #----- load external libraries
