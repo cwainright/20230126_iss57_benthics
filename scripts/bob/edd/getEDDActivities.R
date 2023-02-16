@@ -32,7 +32,7 @@ getEDDActivities <- function(results_list, habitat_marc2021, habitat_marc2022, b
             marc_habitat_activities <- getMarcHabActivities(habitat_marc2022, habitat_marc2021, example, results_list)
             real <- rbind(ncrn_chem_activities, ncrn_hab_activities, ncrn_macroinvert_activities, ncrn_benthic_hab_activities, marc_habitat_activities) # row bind project function returns
             
-            #----- if TRUE, call Marc project functions
+            #----- if TRUE, call Bob project functions
             if(addBob==TRUE){
               bob_2021_macroinvert_activities <- getBob2021MacroinvertsActivities(results_list, bob_2021_water_chem, example)# bob's water chem and macroinvert samples are the same locations
               bob_2021_chem_activities <- getBob2021ChemActivities(results_list, bob_2021_water_chem, example) # just use `water_chem` twice because it's already grouped by site

@@ -33,7 +33,7 @@ getEDDLocations <- function(results_list, habitat_marc2021, habitat_marc2022, bo
             
             real <- rbind(ncrn_macroinvert_locations, ncrn_benth_hab_locations, ncrn_chem_locations, ncrn_hab_locations, marc_habitat_locations) # row bind project function returns
             
-            #----- if TRUE add Marc's 2022 data to dataframe `real` NCRN db data
+            #----- if TRUE add Bob's 2022 data to dataframe `real` NCRN db data
             if(addBob==TRUE){
               bob_2021_macroinvert_locations <- getBob2021MacroinvertLocations(results_list, bob_2021_water_chem, example) # updated to NCRN_Site_ID
               bob_2021_chem_locations <- getBob2021ChemLocations(results_list, bob_2021_water_chem, example) # updated to NCRN_Site_ID
