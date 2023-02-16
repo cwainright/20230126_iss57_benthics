@@ -11,7 +11,7 @@ getBob2022HabLocations <- function(results_list, bob_2022_hab, example){
       
       # make a flat dataframe from `results_list`
       df <- bob_2022_hab %>%
-        dplyr::select(Site) %>% # keep only the cols we need
+        dplyr::select(Site, Locality) %>% # keep only the cols we need
         subset(`Site` %like% "NCRN") # filter out non-site-name entries (sometimes there are reference values entered here)
       df <- dplyr::left_join(df, results_list$tbl_Locations %>% select(Location_ID, Loc_Name, NCRN_Site_ID, Unit_Code, Dec_Degrees_North, Dex_Degrees_East, Datum, HUC, Reach_Code24,
                                                                        Elevation, State, County, Catchment_Area), by = c("Site" = "NCRN_Site_ID"))
@@ -56,7 +56,7 @@ getBob2022HabLocations <- function(results_list, bob_2022_hab, example){
       real[10] <- NA # "Source_Map_Scale_Numeric" 
       real[11] <- NA # "Lat_Lon_Accuracy"
       real[12] <- NA # "Lat_Lon_Accuracy_Unit"
-      real[13] <- NA # "Location_Description"
+      real[13] <- df$Locality # "Location_Description"
       real[14] <- NA # "Travel_Directions"
       real[15] <- NA # "Location_Purpose"
       real[16] <- NA # "Establishment_Date" 
