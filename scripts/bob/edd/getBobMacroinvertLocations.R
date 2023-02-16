@@ -11,12 +11,9 @@ getBob2021MacroinvertLocations <- function(results_list, bob_2021_water_chem, ex
       
       # make a flat dataframe from `results_list`
       
-      df <- bob_2021_water_chem %>% select(`Sample ID`, `Date Collected`)
-      df <- df %>% subset(`Sample ID` %like% "PRWI")
-      df$`Date Collected` <- as.Date(as.numeric(df$`Date Collected`), origin = "1899-12-30")
-      df2 <- df
-      df$sample_type <- "Stream macroinvertebrate sampling"
-      df$Activity_ID <- paste0(df$`Sample ID`, "_macroinvertebrates")
+      df <- bob_2021_water_chem %>%
+        select(`Sample ID`) %>%
+        subset(`Sample ID` %like% "PRWI")
       
       loc_lookup <- results_list$tbl_Locations %>% select(Location_ID, Site_ID, NCRN_Site_ID, Loc_Name, Unit_Code,
                                                           Dec_Degrees_North, Dex_Degrees_East, Datum, HUC, Reach_Code24,
@@ -27,11 +24,6 @@ getBob2021MacroinvertLocations <- function(results_list, bob_2021_water_chem, ex
       df$NCRN_Site_ID <- paste0("NCRN-", df$`Sample ID`)
       df <- df %>% distinct(NCRN_Site_ID, .keep_all = TRUE)
       df$NCRN_Site_ID <- gsub("-", "_", df$NCRN_Site_ID)
-      
-      #----- re-build `example` from `results_list`
-      # starting point: copy the example dataframe but without data
-      real <- tibble::tibble(data.frame(matrix(ncol = ncol(example), nrow = nrow(df)))) # empty dataframe
-      colnames(real) <- colnames(example) # name columns to match example
       
       #----- re-build `example` from `results_list`
       # starting point: copy the example dataframe but without data
