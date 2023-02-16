@@ -33,11 +33,6 @@ getBob2021ChemLocations <- function(results_list, bob_2021_water_chem, example){
       real <- tibble::tibble(data.frame(matrix(ncol = ncol(example), nrow = nrow(df)))) # empty dataframe
       colnames(real) <- colnames(example) # name columns to match example
       
-      #----- re-build `example` from `results_list`
-      # starting point: copy the example dataframe but without data
-      real <- tibble::tibble(data.frame(matrix(ncol = ncol(example), nrow = nrow(df)))) # empty dataframe
-      colnames(real) <- colnames(example) # name columns to match example
-      
       real[1] <- "NCRN" # "#Org_Code"
       real[2] <- df$Unit_Code # "Park_Code" 
       real[3] <- df$NCRN_Site_ID # "Location_ID" shared field with `real_activities.Location_ID`
