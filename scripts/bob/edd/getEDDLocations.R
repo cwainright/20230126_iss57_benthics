@@ -19,7 +19,7 @@ getEDDLocations <- function(results_list, habitat_marc2021, habitat_marc2022, bo
             source("scripts/bob/edd/getBobChemLocations.R")
             source("scripts/bob/edd/getBob2022ChemLocations.R") # write me
             source("scripts/bob/edd/getBob2022HabLocations.R") # write me
-            source("scripts/bob/edd/getBob2022MacroinvertLocations.R") # write me
+            source("scripts/bob/edd/getBob2022MacroinvertLocations.R")
             
             # load example data
             example <- readxl::read_excel("data/NCRN_BSS_EDD_20230105_1300.xlsx", sheet = "Locations") # https://doimspp.sharepoint.com/:x:/r/sites/NCRNDataManagement/Shared%20Documents/General/Standards/Data-Standards/EQuIS-WQX-EDD/NCRN_BSS_EDD_20230105_1300.xlsx?d=w8c283fde9cbd4af480945c8c8bd94ff6&csf=1&web=1&e=7Y9W1M
@@ -39,7 +39,7 @@ getEDDLocations <- function(results_list, habitat_marc2021, habitat_marc2022, bo
               bob_2021_chem_locations <- getBob2021ChemLocations(results_list, bob_2021_water_chem, example) # updated to NCRN_Site_ID
               bob_2022_chem_locations <- getBob2022ChemLocations(results_list, bob_2022_wq, example)
               bob_2022_hab_locations <- getBob2022HabLocations(results_list, bob_2022_hab, example)
-              bob_2022_macroinvert_locations <- getBob2022MacroinvertLocations(results_list, bob_2022_macroinvert, example)
+              bob_2022_macroinvert_locations <- getBob2022MacroinvertLocations(results_list, bob_2022_macroinvert, example) # updated to NCRN_Site_ID
               # combine
               real <- rbind(real, bob_2021_macroinvert_locations, bob_2021_chem_locations, bob_2022_chem_locations, bob_2022_hab_locations, bob_2022_macroinvert_locations)
             }
