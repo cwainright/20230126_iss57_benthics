@@ -15,7 +15,7 @@ getBobMacroinvertsResults <- function(results_list, bob_2021_macroinvert, bob_20
       
       df$Characteristic_Name <- "Stream macroinvertebrate sampling"
       df$unit <- "count of individuals"
-      df$Activity_ID <- paste0(df$site, "_water_chem")
+      df$Activity_ID <- paste0(df$site, "_macroinvertebrates")
       
       loc_lookup <- results_list$tbl_Locations %>% select(Location_ID, Site_ID, NCRN_Site_ID, Loc_Name)
       loc_lookup$bob_site <- stringr::str_sub(loc_lookup$NCRN_Site_ID, -9, -1)
