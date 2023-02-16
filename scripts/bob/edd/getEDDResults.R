@@ -18,8 +18,8 @@ getEDDResults <- function(results_list, habitat_marc2021, habitat_marc2022, bob_
             source("scripts/bob/edd/getBobMacroinvertResults.R")
             source("scripts/bob/edd/getBobChemResults.R")
             source("scripts/bob/edd/getBob2022ChemResults.R")
-            source("scripts/bob/edd/getBob2022HabResults.R")
-            source("scripts/bob/edd/getBob2022MacroinvertResults.R")
+            source("scripts/bob/edd/getBob2022HabResults.R") # write me
+            source("scripts/bob/edd/getBob2022MacroinvertResults.R") # write me
             
             # load example data
             example <- readxl::read_excel("data/NCRN_BSS_EDD_20230105_1300.xlsx", sheet = "Results") # https://doimspp.sharepoint.com/:x:/r/sites/NCRNDataManagement/Shared%20Documents/General/Standards/Data-Standards/EQuIS-WQX-EDD/NCRN_BSS_EDD_20230105_1300.xlsx?d=w8c283fde9cbd4af480945c8c8bd94ff6&csf=1&web=1&e=7Y9W1M
@@ -39,8 +39,8 @@ getEDDResults <- function(results_list, habitat_marc2021, habitat_marc2022, bob_
                 bob_2021_macroinvert_results <- getBobMacroinvertsResults(results_list, bob_2021_macroinvert, bob_2021_water_chem, example)
                 bob_2021_chem_results <- getBobChemResults(results_list, bob_2021_water_chem, example)
                 bob_2022_chem_results <- getBob2022ChemResults(results_list, bob_2022_wq, example)
-                bob_2022_hab_results <- getBob2022ChemResults(results_list, bob_2022_hab, example)
-                bob_2022_macroinvert_results <- getBob2022ChemResults(results_list, bob_2022_macroinvert, example)
+                bob_2022_hab_results <- getBob2022HabResults(results_list, bob_2022_hab, example)
+                bob_2022_macroinvert_results <- getBob2022MacroinvertResults(results_list, bob_2022_macroinvert, example)
                 # combine
                 real <- rbind(real, bob_2021_macroinvert_results, bob_2021_chem_results, bob_2022_chem_results, bob_2022_hab_results, bob_2022_macroinvert_results)
             }
