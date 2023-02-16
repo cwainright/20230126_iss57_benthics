@@ -17,7 +17,7 @@ getEDDLocations <- function(results_list, habitat_marc2021, habitat_marc2022, bo
             source("scripts/edd/getNCRNHabLocations.R")
             source("scripts/bob/edd/getBobMacroinvertLocations.R")
             source("scripts/bob/edd/getBobChemLocations.R")
-            source("scripts/bob/edd/getBob2022ChemLocations.R") # write me
+            source("scripts/bob/edd/getBob2022ChemLocations.R")
             source("scripts/bob/edd/getBob2022HabLocations.R") # write me
             source("scripts/bob/edd/getBob2022MacroinvertLocations.R")
             
@@ -37,7 +37,7 @@ getEDDLocations <- function(results_list, habitat_marc2021, habitat_marc2022, bo
             if(addBob==TRUE){
               bob_2021_macroinvert_locations <- getBob2021MacroinvertLocations(results_list, bob_2021_water_chem, example) # updated to NCRN_Site_ID
               bob_2021_chem_locations <- getBob2021ChemLocations(results_list, bob_2021_water_chem, example) # updated to NCRN_Site_ID
-              bob_2022_chem_locations <- getBob2022ChemLocations(results_list, bob_2022_wq, example)
+              bob_2022_chem_locations <- getBob2022ChemLocations(results_list, bob_2022_wq, example) # updated to NCRN_Site_ID
               bob_2022_hab_locations <- getBob2022HabLocations(results_list, bob_2022_hab, example)
               bob_2022_macroinvert_locations <- getBob2022MacroinvertLocations(results_list, bob_2022_macroinvert, example) # updated to NCRN_Site_ID
               # combine
