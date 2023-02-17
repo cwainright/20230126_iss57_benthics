@@ -28,7 +28,7 @@ getBob2022HabResults <- function(results_list, bob_2022_hab, example){
       loc_lookup <- results_list$tbl_Locations %>% select(Location_ID, Site_ID, NCRN_Site_ID, Loc_Name)
       df <- dplyr::left_join(df, loc_lookup, by=c("Site" = "NCRN_Site_ID"))
       # make a lookup table for units
-      unit_lookup <- getBob2022HabResultsUnitLookup(df, bob_2022_hab)
+      unit_lookup <- getBob2022HabResultsUnitLookup()
       df <- dplyr::left_join(df, unit_lookup %>% select(-c(choices)), by=c("variable")) # add units to df
       
       #----- re-build `example` from `results_list`
