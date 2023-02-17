@@ -45,7 +45,7 @@ getEDDLocations <- function(results_list, habitat_marc2021, habitat_marc2022, bo
             }
             
             #----- keep only unique Locations
-            real <- real[!duplicated(real[c('Latitude', 'Longitude')]),] # since naming conventions differed according to who did the sampling, we keep unique lat/lon pairs
+            real <- real[!duplicated(real[c('Location_ID')]),] # since naming conventions differed according to who did the sampling, we keep unique lat/lon pairs
             
             #----- error-checking:
             check_df <- tibble::tibble(data.frame(matrix(ncol=3, nrow=ncol(real))))
