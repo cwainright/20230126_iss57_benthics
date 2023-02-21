@@ -25,13 +25,14 @@ getEDDResults <- function(results_list, habitat_marc2021, habitat_marc2022, bob_
             example <- readxl::read_excel("data/NCRN_BSS_EDD_20230105_1300.xlsx", sheet = "Results") # https://doimspp.sharepoint.com/:x:/r/sites/NCRNDataManagement/Shared%20Documents/General/Standards/Data-Standards/EQuIS-WQX-EDD/NCRN_BSS_EDD_20230105_1300.xlsx?d=w8c283fde9cbd4af480945c8c8bd94ff6&csf=1&web=1&e=7Y9W1M
             
             #----- call NCRN project functions
-            marc_habitat_results <- getMarcHabResults(habitat_marc2022, habitat_marc2021, example, results_list)
+            # marc_habitat_results <- getMarcHabResults(habitat_marc2022, habitat_marc2021, example, results_list)
             ncrn_macroinvert_results <- getNCRNMacroinvertResults(results_list, example)
             ncrn_benthic_hab_results <- getNCRNBenthicHabResults(results_list, example)
             ncrn_chem_results <- getNCRNChemResults(results_list, example)
             ncrn_hab_results <- getNCRNHabResults(results_list, example)
             
-            real <- rbind(ncrn_macroinvert_results, ncrn_benthic_hab_results, ncrn_chem_results, ncrn_hab_results, marc_habitat_results) # row bind project function returns
+            # real <- rbind(ncrn_macroinvert_results, ncrn_benthic_hab_results, ncrn_chem_results, ncrn_hab_results, marc_habitat_results) # row bind project function returns
+            real <- rbind(ncrn_macroinvert_results, ncrn_benthic_hab_results, ncrn_chem_results, ncrn_hab_results) # row bind project function returns
             
             #----- if TRUE, call Bob functions
             if(addBob==TRUE){

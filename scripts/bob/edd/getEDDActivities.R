@@ -29,8 +29,9 @@ getEDDActivities <- function(results_list, habitat_marc2021, habitat_marc2022, b
             ncrn_hab_activities <- getNCRNHabActivities(results_list, example)
             ncrn_macroinvert_activities <- getNCRNMacroinvertActivities(results_list, example)
             ncrn_benthic_hab_activities <- getNCRNBenthicHabActivities(results_list, example)
-            marc_habitat_activities <- getMarcHabActivities(habitat_marc2022, habitat_marc2021, example, results_list)
-            real <- rbind(ncrn_chem_activities, ncrn_hab_activities, ncrn_macroinvert_activities, ncrn_benthic_hab_activities, marc_habitat_activities) # row bind project function returns
+            # marc_habitat_activities <- getMarcHabActivities(habitat_marc2022, habitat_marc2021, example, results_list)
+            real <- rbind(ncrn_chem_activities, ncrn_hab_activities, ncrn_macroinvert_activities, ncrn_benthic_hab_activities) # row bind project function returns
+            # real <- rbind(ncrn_chem_activities, ncrn_hab_activities, ncrn_macroinvert_activities, ncrn_benthic_hab_activities, marc_habitat_activities) # row bind project function returns
             
             #----- if TRUE, call Bob project functions
             if(addBob==TRUE){

@@ -356,7 +356,7 @@ pre code {
 
 <h1 class="title toc-ignore">Biological Stream Survey Electronic Data
 Deliverable</h1>
-<h4 class="date">Feb 17, 2023</h4>
+<h4 class="date">Feb 21, 2023</h4>
 
 </div>
 
@@ -373,7 +373,7 @@ dataset, and provides general guidelines for interpreting the
 dataset.</p>
 <p>This dataset synthesizes all available NCRN macroinvertebrate, water
 chemistry, and aquatic physical habitat inventory data into one file.
-Data are from eight <a href="https://drive.google.com/drive/folders/1YmxYNxgTcH7MOkpxET5mqZB1_D_QdI9E?usp=share_link">sources</a>:<br />
+Data are from five <a href="https://drive.google.com/drive/folders/1YmxYNxgTcH7MOkpxET5mqZB1_D_QdI9E?usp=share_link">sources</a>:<br />
 1. The NCRN <a href="https://drive.google.com/file/d/1Qaf66sz_UWhr6ra1o3xKN55g-nksAO-f/view?usp=share_link">Biological
 Stream Survey (BSS) MS Access database</a>. An entity relationship
 diagram of this database is available <a href="https://drive.google.com/file/d/1sgs-UKUGkCqxV15Vn_wAtBZT0R-BKgVt/view?usp=share_link">here.</a><br />
@@ -381,15 +381,11 @@ diagram of this database is available <a href="https://drive.google.com/file/d/1
 of Bob’s 2021 macroinvertebrate data</a><br />
 3. <a href="https://docs.google.com/spreadsheets/d/1Bhh8ddOkymGA23osD2GHo0Xjrc0RV5Kb/edit?usp=share_link&amp;ouid=102040878521825586396&amp;rtpof=true&amp;sd=true">XLSX
 of Bob’s 2022 macroinvertebrate data</a><br />
-4. <a href="https://docs.google.com/spreadsheets/d/1APRPt4ZK5pIX8wroTsN4jbLgsxZ1P8yF/edit?usp=share_link&amp;ouid=102040878521825586396&amp;rtpof=true&amp;sd=true">XLSX
-of Marc’s 2021 stream habitat data</a><br />
-5. <a href="https://docs.google.com/spreadsheets/d/1BzNDvn7nJdsmxjfFNfYIfdqBqlh2egzQ/edit?usp=share_link&amp;ouid=102040878521825586396&amp;rtpof=true&amp;sd=true">XLSX
-of Marc’s 2022 stream habitat data</a><br />
-6. <a href="https://docs.google.com/spreadsheets/d/10gD1GLezZpyT4amSoLsZimedBoQVNY59/edit?usp=share_link&amp;ouid=102040878521825586396&amp;rtpof=true&amp;sd=true">XLSX
+4. <a href="https://docs.google.com/spreadsheets/d/10gD1GLezZpyT4amSoLsZimedBoQVNY59/edit?usp=share_link&amp;ouid=102040878521825586396&amp;rtpof=true&amp;sd=true">XLSX
 of Bob’s 2021 water quality data</a><br />
-7. <a href="https://docs.google.com/spreadsheets/d/186cFp4gJ-cUiUnLoTQOAqVGQRFFXmB8u/edit?usp=share_link&amp;ouid=102040878521825586396&amp;rtpof=true&amp;sd=true">XLSX
+5. <a href="https://docs.google.com/spreadsheets/d/186cFp4gJ-cUiUnLoTQOAqVGQRFFXmB8u/edit?usp=share_link&amp;ouid=102040878521825586396&amp;rtpof=true&amp;sd=true">XLSX
 of Bob’s 2022 water quality data</a><br />
-8. <a href="https://docs.google.com/spreadsheets/d/1S1dVhXzT74KJZvB3Yd0S4odIOQ61kEak/edit?usp=share_link&amp;ouid=102040878521825586396&amp;rtpof=true&amp;sd=true">XLSX
+6. <a href="https://docs.google.com/spreadsheets/d/1S1dVhXzT74KJZvB3Yd0S4odIOQ61kEak/edit?usp=share_link&amp;ouid=102040878521825586396&amp;rtpof=true&amp;sd=true">XLSX
 of Bob’s 2022 stream habitat data</a></p>
 </div>
 <div id="methods" class="section level2">
@@ -438,12 +434,12 @@ cols_na %&gt;%
     tab_header(title=&quot;Table 1. Count of columns in `EDD$Results` with NA and non-NA values.&quot;) %&gt;%
     cols_label(only_na = &quot;Columns contain only NA&quot;) %&gt;%
     summary_rows(columns = n, fns = list(Total=&quot;sum&quot;), decimals=0)</code></pre>
-<div id="rsgqcahyfk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="ixoqjtumwp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#rsgqcahyfk .gt_table {
+#ixoqjtumwp .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -468,7 +464,7 @@ cols_na %&gt;%
   border-left-color: #D3D3D3;
 }
 
-#rsgqcahyfk .gt_heading {
+#ixoqjtumwp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -480,12 +476,12 @@ cols_na %&gt;%
   border-right-color: #D3D3D3;
 }
 
-#rsgqcahyfk .gt_caption {
+#ixoqjtumwp .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#rsgqcahyfk .gt_title {
+#ixoqjtumwp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -497,7 +493,7 @@ cols_na %&gt;%
   border-bottom-width: 0;
 }
 
-#rsgqcahyfk .gt_subtitle {
+#ixoqjtumwp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -509,13 +505,13 @@ cols_na %&gt;%
   border-top-width: 0;
 }
 
-#rsgqcahyfk .gt_bottom_border {
+#ixoqjtumwp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#rsgqcahyfk .gt_col_headings {
+#ixoqjtumwp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -530,7 +526,7 @@ cols_na %&gt;%
   border-right-color: #D3D3D3;
 }
 
-#rsgqcahyfk .gt_col_heading {
+#ixoqjtumwp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -550,7 +546,7 @@ cols_na %&gt;%
   overflow-x: hidden;
 }
 
-#rsgqcahyfk .gt_column_spanner_outer {
+#ixoqjtumwp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -562,15 +558,15 @@ cols_na %&gt;%
   padding-right: 4px;
 }
 
-#rsgqcahyfk .gt_column_spanner_outer:first-child {
+#ixoqjtumwp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rsgqcahyfk .gt_column_spanner_outer:last-child {
+#ixoqjtumwp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rsgqcahyfk .gt_column_spanner {
+#ixoqjtumwp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -582,7 +578,7 @@ cols_na %&gt;%
   width: 100%;
 }
 
-#rsgqcahyfk .gt_group_heading {
+#ixoqjtumwp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -608,7 +604,7 @@ cols_na %&gt;%
   text-align: left;
 }
 
-#rsgqcahyfk .gt_empty_group_heading {
+#ixoqjtumwp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -623,15 +619,15 @@ cols_na %&gt;%
   vertical-align: middle;
 }
 
-#rsgqcahyfk .gt_from_md > :first-child {
+#ixoqjtumwp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rsgqcahyfk .gt_from_md > :last-child {
+#ixoqjtumwp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rsgqcahyfk .gt_row {
+#ixoqjtumwp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -650,7 +646,7 @@ cols_na %&gt;%
   overflow-x: hidden;
 }
 
-#rsgqcahyfk .gt_stub {
+#ixoqjtumwp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -663,7 +659,7 @@ cols_na %&gt;%
   padding-right: 5px;
 }
 
-#rsgqcahyfk .gt_stub_row_group {
+#ixoqjtumwp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -677,11 +673,11 @@ cols_na %&gt;%
   vertical-align: top;
 }
 
-#rsgqcahyfk .gt_row_group_first td {
+#ixoqjtumwp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#rsgqcahyfk .gt_summary_row {
+#ixoqjtumwp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -691,16 +687,16 @@ cols_na %&gt;%
   padding-right: 5px;
 }
 
-#rsgqcahyfk .gt_first_summary_row {
+#ixoqjtumwp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#rsgqcahyfk .gt_first_summary_row.thick {
+#ixoqjtumwp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#rsgqcahyfk .gt_last_summary_row {
+#ixoqjtumwp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -710,7 +706,7 @@ cols_na %&gt;%
   border-bottom-color: #D3D3D3;
 }
 
-#rsgqcahyfk .gt_grand_summary_row {
+#ixoqjtumwp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -720,7 +716,7 @@ cols_na %&gt;%
   padding-right: 5px;
 }
 
-#rsgqcahyfk .gt_first_grand_summary_row {
+#ixoqjtumwp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -730,11 +726,11 @@ cols_na %&gt;%
   border-top-color: #D3D3D3;
 }
 
-#rsgqcahyfk .gt_striped {
+#ixoqjtumwp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#rsgqcahyfk .gt_table_body {
+#ixoqjtumwp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -743,7 +739,7 @@ cols_na %&gt;%
   border-bottom-color: #D3D3D3;
 }
 
-#rsgqcahyfk .gt_footnotes {
+#ixoqjtumwp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -757,7 +753,7 @@ cols_na %&gt;%
   border-right-color: #D3D3D3;
 }
 
-#rsgqcahyfk .gt_footnote {
+#ixoqjtumwp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -766,7 +762,7 @@ cols_na %&gt;%
   padding-right: 5px;
 }
 
-#rsgqcahyfk .gt_sourcenotes {
+#ixoqjtumwp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -780,7 +776,7 @@ cols_na %&gt;%
   border-right-color: #D3D3D3;
 }
 
-#rsgqcahyfk .gt_sourcenote {
+#ixoqjtumwp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -788,64 +784,64 @@ cols_na %&gt;%
   padding-right: 5px;
 }
 
-#rsgqcahyfk .gt_left {
+#ixoqjtumwp .gt_left {
   text-align: left;
 }
 
-#rsgqcahyfk .gt_center {
+#ixoqjtumwp .gt_center {
   text-align: center;
 }
 
-#rsgqcahyfk .gt_right {
+#ixoqjtumwp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rsgqcahyfk .gt_font_normal {
+#ixoqjtumwp .gt_font_normal {
   font-weight: normal;
 }
 
-#rsgqcahyfk .gt_font_bold {
+#ixoqjtumwp .gt_font_bold {
   font-weight: bold;
 }
 
-#rsgqcahyfk .gt_font_italic {
+#ixoqjtumwp .gt_font_italic {
   font-style: italic;
 }
 
-#rsgqcahyfk .gt_super {
+#ixoqjtumwp .gt_super {
   font-size: 65%;
 }
 
-#rsgqcahyfk .gt_footnote_marks {
+#ixoqjtumwp .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#rsgqcahyfk .gt_asterisk {
+#ixoqjtumwp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#rsgqcahyfk .gt_indent_1 {
+#ixoqjtumwp .gt_indent_1 {
   text-indent: 5px;
 }
 
-#rsgqcahyfk .gt_indent_2 {
+#ixoqjtumwp .gt_indent_2 {
   text-indent: 10px;
 }
 
-#rsgqcahyfk .gt_indent_3 {
+#ixoqjtumwp .gt_indent_3 {
   text-indent: 15px;
 }
 
-#rsgqcahyfk .gt_indent_4 {
+#ixoqjtumwp .gt_indent_4 {
   text-indent: 20px;
 }
 
-#rsgqcahyfk .gt_indent_5 {
+#ixoqjtumwp .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -883,9 +879,9 @@ cols_na %&gt;%
 <p>Generally, one row in <code>Results</code> is one unique combination
 of <code>Activity_ID</code> and <code>Method_Speciation</code>.</p>
 <pre class="r"><code>nrow(EDD$Results)</code></pre>
-<pre><code>## [1] 23991</code></pre>
+<pre><code>## [1] 22467</code></pre>
 <pre class="r"><code>uniqueN(EDD$Results, by=c(&quot;Activity_ID&quot;, &quot;Method_Speciation&quot;))</code></pre>
-<pre><code>## [1] 21437</code></pre>
+<pre><code>## [1] 19913</code></pre>
 <p>Five columns from <code>Results</code> will be especially
 important:<br />
 1. <code>Activity_ID</code>: The sampling event (e.g., a benthic
